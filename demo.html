@@ -24,16 +24,6 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/graphviz.svg.css">
 	</head>
-
-	<style>
-        #instructions {
-            color: #fcfcfc;
-            position: absolute;
-            z-index: 100;
-            bottom: 0px;
-            left: 0px;
-        }
-    </style>
 	<body>
 		<h4 id="instructions">Click node to highlight; Shift-scroll to zoom; Esc to unhighlight</h4>
 		<div id="graph" style="width: 100%; height: 100%; overflow: scroll;"></div>
@@ -46,10 +36,10 @@
 		<script type="text/javascript">
  			$(document).ready(function(){
                 $("#graph").graphviz({
-                    url: "demo.svg", 
+                    url: "relationships.svg", 
                     ready: function() {
                         var gv = this
-                        gv.nodes().click(function () {
+                        gv.nodes().hover(function () {
                             var $set = $()
                             $set.push(this)
                             $set = $set.add(gv.linkedFrom(this, true))
